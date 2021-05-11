@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import itacademy.kg.notesapp.data.Note
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DescriptionsFragment : Fragment() {
@@ -31,10 +33,13 @@ val bundle = this.arguments
         val memo = bundle?.getSerializable(Utils.KEY) as Note
       val nameOfNote = memo.nameOfNote
       val descOfNote = memo.descriptions
-      val dataOfNote = memo.date.toString()
+
+//      val dataOfNote = memo.date.toString()
+        val selectedDate  = "${memo.date.day}/${memo.date.month + 1}/${memo.date.year}"
         descriptionTitle.text = nameOfNote
         descriptionsDesc.text = descOfNote
-       descData.text = dataOfNote
+
+       descData.text = selectedDate
 
     }
 }
