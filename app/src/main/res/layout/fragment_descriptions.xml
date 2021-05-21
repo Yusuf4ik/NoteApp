@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    tools:context=".DescriptionsFragment">
+    tools:context=".fragments.DescriptionsFragment">
 
     <TextView
         android:id="@+id/descriptionTitle"

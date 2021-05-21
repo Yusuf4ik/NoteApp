@@ -1,22 +1,22 @@
 package itacademy.kg.notesapp.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
-import itacademy.kg.notesapp.DescriptionsFragment
 import itacademy.kg.notesapp.R
 import itacademy.kg.notesapp.data.Note
 
 class MemoAdapter(
-        var notes : List<Note>,
+        var context: Context,
+        private var notes : List<Note>,
         private var listener: NoteOnClickListener
+
+
 
 
 ) : RecyclerView.Adapter<MemoAdapter.Holder>() {
@@ -28,7 +28,7 @@ class MemoAdapter(
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val title = itemView.findViewById<TextView>(R.id.nameOfNote)
         val body = itemView.findViewById<TextView>(R.id.descriptions)
-        val image = itemView.findViewById<ImageView>(R.id.imageButton)
+        val image = itemView.findViewById<ImageView>(R.id.deleteButton)
         val edit = itemView.findViewById<ImageView>(R.id.imageButton2)
         val parent = itemView.findViewById<CardView>(R.id.parent)
         init {
@@ -40,7 +40,7 @@ class MemoAdapter(
         override fun onClick(v: View?) {
             when(v?.id){
                 R.id.parent -> listener.onCardClick(adapterPosition)
-                R.id.imageButton -> listener.onDoneNote(adapterPosition)
+                R.id.deleteButton -> listener.onDoneNote(adapterPosition)
                 R.id.imageButton2 -> listener.onEdit(adapterPosition)
             }
         }
